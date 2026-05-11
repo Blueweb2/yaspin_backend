@@ -1,0 +1,72 @@
+import { Request, Response } from "express";
+
+import { AuthService } from "./auth.service";
+
+
+const registerAdmin = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const result =
+      await AuthService.registerAdmin(
+        req.body
+      );
+
+    res.status(201).json({
+      success: true,
+      message:
+        "Admin registered successfully",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+const loginUser = async (req: Request, res: Response) => {
+  try {
+    const result = await AuthService.loginUser(
+      req.body.email,
+      req.body.password
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const registerUser = async (req: Request, res: Response) => {
+  try {
+    const result = await AuthService.registerUser(req.body);
+
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const AuthController = {
+  loginUser,
+  registerUser,
+  registerAdmin,
+};
