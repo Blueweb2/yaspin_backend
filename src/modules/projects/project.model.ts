@@ -4,7 +4,6 @@ import { IProject } from "./project.interface";
 
 import {
     PROJECT_STATUS,
-    PROJECT_CATEGORIES,
 } from "./project.constant";
 
 const featureSchema = new Schema(
@@ -54,10 +53,9 @@ const projectSchema = new Schema<IProject>(
 
         category: {
             type: String,
-            enum: PROJECT_CATEGORIES,
             required: true,
+            trim: true,
         },
-
         technologies: {
             type: [String],
             default: [],
