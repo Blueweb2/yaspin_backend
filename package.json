@@ -2,24 +2,19 @@
   "name": "yaspin-backend",
   "version": "1.0.0",
   "description": "",
-
   "main": "dist/server.js",
-
   "engines": {
     "node": "20.x"
   },
-
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cloudinary": "^2.10.0",
@@ -34,7 +29,6 @@
     "slugify": "^1.6.9",
     "zod": "^4.4.3"
   },
-
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
@@ -42,7 +36,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/multer": "^2.1.0",
-    "@types/node": "^22.15.17",
+    "@types/node": "^22.19.18",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   }
