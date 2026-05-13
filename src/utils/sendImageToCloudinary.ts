@@ -25,6 +25,8 @@ const sendImageToCloudinary = async (
             folder,
             public_id:
               sanitizedImageName,
+
+            resource_type: "image",
           },
           (error, result) => {
             if (error) {

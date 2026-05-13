@@ -7,6 +7,8 @@ import { AuthRoutes } from "./modules/auth/auth.routes";
 import { UserRoutes } from "./modules/users/user.routes";
 import { ProjectRoutes } from "./modules/projects/project.routes";
 import { ServiceRoutes } from "./modules/services/service.routes";
+import { ContactRoutes } from "./modules/contact/contact.route";
+import { DashboardRoutes } from "./modules/dashboard/dashboard.route";
 
 dotenv.config();
 
@@ -23,6 +25,12 @@ app.use("/api/v1/projects", ProjectRoutes);
 app.use(
   "/api/v1/services",
   ServiceRoutes
+);
+app.use("/api/v1/dashboard", DashboardRoutes);
+
+app.use(
+  "/api/v1/contact",
+  ContactRoutes
 );
 
 app.get("/", (req, res) => {
