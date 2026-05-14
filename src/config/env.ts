@@ -22,6 +22,18 @@ interface EnvConfig {
   cloudinary_api_key: string;
 
   cloudinary_api_secret: string;
+
+  smtp_host: string;
+
+  smtp_port: string;
+
+  smtp_user: string;
+
+  smtp_pass: string;
+
+  email_from: string;
+
+  contact_receiver_email: string;
 }
 
 const env: EnvConfig = {
@@ -55,6 +67,25 @@ const env: EnvConfig = {
   cloudinary_api_secret:
     process.env
       .CLOUDINARY_API_SECRET || "",
+
+  smtp_host:
+    process.env.SMTP_HOST || "",
+
+  smtp_port:
+    process.env.SMTP_PORT || "465",
+
+  smtp_user:
+    process.env.SMTP_USER || "",
+
+  smtp_pass:
+    process.env.SMTP_PASS || "",
+
+  email_from:
+    process.env.EMAIL_FROM || "",
+
+  contact_receiver_email:
+    process.env.CONTACT_RECEIVER_EMAIL ||
+    "",
 };
 
 export { env };

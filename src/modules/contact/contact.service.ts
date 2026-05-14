@@ -1,12 +1,17 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
+import { env } from "../../config/env";
 
-const resend = new Resend(
-  process.env.RESEND_API_KEY
-);
+const transporter = nodemailer.createTransport({
+  host: env.smtp_host,
+  port: Number(env.smtp_port),
+  secure: true,
+  auth: {
+    user: env.smtp_user,
+    pass: env.smtp_pass,
+  },
+});
 
-const sendContactEmail = async (
-  payload: any
-) => {
+const sendContactEmail = async (payload: any) => {
   const {
     firstName,
     lastName,
@@ -18,15 +23,14 @@ const sendContactEmail = async (
     message,
   } = payload;
 
-  return await resend.emails.send({
-    from:
-      "YASPN Contact <onboarding@resend.dev>",
+  return await transporter.sendMail({
+    from: `"YASPN Contact" <${env.email_from}>`,
 
-    to:
-      process.env
-        .CONTACT_RECEIVER_EMAIL || "",
+    to: env.contact_receiver_email,
 
-    subject: `New Inquiry from ${firstName}`,
+    replyTo: email,
+
+    subject: `New Inquiry from ${firstName} ${lastName}`,
 
     html: `
       <h2>New Contact Inquiry</h2>
